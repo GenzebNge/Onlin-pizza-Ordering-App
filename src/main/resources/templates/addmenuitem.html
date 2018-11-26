@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Menu Item</title>
+    <span th:include="base::bootstrap_link"></span>
+</head>
+<body>
+<span th:replace="base::admin_nav"></span>
+<div class="container">
+    <h2>Menu Item</h2>
+    <hr/>
+    <form class="form-horizontal" th:action="@{/admin/addmenuitem}" th:object="${item}" method="post"  enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="text">Name: </label>
+            <input type="text" class="form-control"  th:field="*{name}">
+        </div><b/> <div class="form-group">
+            <label for="text">Description: </label>
+            <input type="text" class="form-control" th:field="*{description}">
+        </div><b/> <div class="form-group">
+            <label for="text">Price: </label>
+            <input type="number" class="form-control" id="text" th:field="*{price}">
+        </div><b/><br/>
+        <input type="file" name="file">
+        <hr/>
+        <br/><button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+</body>
+</html>

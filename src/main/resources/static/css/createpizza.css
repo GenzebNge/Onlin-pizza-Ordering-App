@@ -1,0 +1,133 @@
+#div1{
+    height: 350px;
+    width: 350px;
+    float: left;
+    margin-left: 20%;
+}
+
+#div2{
+    height: 730px;
+    width: 500px;
+    background-color: aliceblue;
+    float: right;
+    margin-right: 20%;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+#img_blankpizza{
+    height: 350px;
+    width: 350px;
+    position: fixed;
+    margin-top: 100px;
+    margin-left: 230px;
+}
+.ingrediments
+{
+    position: absolute;
+    position: fixed;
+    margin-left: 290px;
+    margin-top: 155px;
+    height: 250px;
+    width: 250px;
+    display: none;
+
+}
+#div_choose_your_size{
+    float: right;
+    margin-right: 400px;
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+
+}
+#button_small_size{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+
+}
+#button_medium_size{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: 30px;
+
+}
+#button_large_size{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-left: 30px;
+
+}
+button:focus{
+    outline-style: none;
+}
+
+#div_choose_your_crust{
+    float: right;
+    margin-right: 150px;
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+.choose_your_crust_text{
+    margin-left: 2px;
+}
+#special_instructions{
+    float: right;
+    margin-right: 150px;
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    width: 600px;
+}
+#choose_cheese_and_sauce{
+    margin-left: 100px;
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    width: 600px;
+}
+#choose_toppings_meat{
+    margin-left: 250px;
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    width: 600px;
+
+}#choose_toppings_non_meat{
+     float: right;
+     margin-right: 150px;
+     background-color: aliceblue;
+     padding: 20px;
+     border-radius: 30px;
+     margin-bottom: 30px;
+     width: 600px;
+ }
+#create_body_background{
+    background: url("../logo/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#create_pizza_button{
+    float: right;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 400px;
+    margin-bottom: 120px;
+    margin-top: -120px;
+    background-color: green;
+    position: relative;
+    color: white;
+    font-size: xx-large;
+    border: solid white 4px;
+}

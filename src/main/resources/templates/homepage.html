@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <span th:include="base::bootstrap_link"></span>
+</head>
+<body>
+<div th:replace="base::navlinks"></div>
+<p style="clear: both"></p>
+<div class="row">
+    <div class="col-lg-6" id="div_img_">
+        <img src="logo/banner_pizza.png" id="img_banner_pizza"/></div>
+    <div class="col-lg-6">
+        <img src="logo/discover_better_pizza.png" id="discover_better_pizza"/></div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div id="create_your_own_div">
+                <img src="image/home_page/create_your_own.PNG" id="create_your_own_image"/></div>
+            <div><a th:href="@{/menu}">
+                <button id="button_creat_homep">Create Your Own Pizza</button>
+            </a></div>
+        </div>
+        <div class="col-lg-6">
+            <div id="never_miss_deal_div">
+                <img src="image/home_page/never_miss_deal.PNG" id="never_miss_deal_image"/></div>
+            <div style="text-align: center; margin-top: 20px"><b style="font-size: xx-large">NEVER MISS A DEAL</b><br/>
+                <small>Like to receive exclusive discounts and promotions? <br/>
+                    Sign up for email and text offers to start saving on all<br/> your MC Pizza favorites
+                </small>
+                <br/>
+                <br/><a th:href="@{/login}">
+                    <button id="button__sign_up_adv">Sign Up</button>
+                </a></div>
+        </div>
+    </div>
+</div>
+<div id="homepage_footer_b"></div>
+</body>
+</html>
+

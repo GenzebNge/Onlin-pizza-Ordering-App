@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Menu</title>
+    <span th:include="base::bootstrap_link"></span>
+</head>
+<body>
+<span th:replace="base::admin_nav"></span>
+    <h2 style="margin-left: 20px">Menu Items</h2>
+    <a th:href="@{/admin/addmenuitem}"><button class="btn btn-info btn center-block">Add Menu Item</button></a>
+    <table class="table table-striped" style="margin-left: 20px">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${menuitem}">
+            <td><b>[[${item.name}]]</b></td>
+            <td>[[${item.description}]]</td>
+            <td>[[${item.price}]]</td>
+            <td>
+                <a th:href="@{/admin/editmenuitem/{id} (id=${item.id})}"><button class="btn btn-default">Edit</button></a>
+                <a th:href="@{/admin/deletemenuitem/{id} (id=${item.id})}"><button class="btn btn-danger">Remove</button></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+</body>
+</html>

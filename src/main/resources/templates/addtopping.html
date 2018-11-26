@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Topping</title>
+    <span th:include="base::bootstrap_link"></span>
+</head>
+<body>
+<span th:replace="base::admin_nav"></span>
+<div class="container">
+    <h2>Topping</h2>
+    <hr/>
+    <form class="form-horizontal" th:action="@{/admin/addtopping}" th:object="${topping}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="text">Topping: </label>
+            <input type="text" class="form-control" id="text" th:field="*{name}">
+        </div><b/>
+        <hr/>
+        <br/><button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+</body>
+</html>

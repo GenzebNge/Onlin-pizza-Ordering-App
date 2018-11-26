@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <span th:include="base::bootstrap_link"></span>
+</head>
+<body>
+<span th:replace="base::admin_nav"></span>
+<div class="container">
+    <h2>List of Customers</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td>[[${order.user.firstName}]]</td>
+            <td>[[${order.user.lastName}]]</td>
+            <td>[[${order.user.email}]]</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+</div>
+</body>
+</html>

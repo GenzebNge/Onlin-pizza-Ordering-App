@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Place Order</title>
+    <span th:include="base::bootstrap_link"></span>
+    <script>
+        $(function () {
+            $('#cancel').click(function () {
+                $('#mod_').modal('show');
+            });
+
+            $("#cancel_o").click(function (event) {
+                event.preventDefault();
+                window.location.replace("/");
+            });
+            $('#place_order').click(function () {
+                $('#form').submit();
+            });
+            $('#regis_b').click(function () {
+                window.location.replace("/register")
+            })
+        });
+    </script>
+</head>
+<body>
+
+<div class="modal fade" id="mod_" role="dialog" style="margin-top: 250px">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cancel</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to cancel your order?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="cancel_o">Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="no_cancel">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+<span th:replace="base::navlinks"></span>
+<div class="container">
+    <h2>Order Summary</h2>
+    <hr/>
+    <h3>[[${pizza.dough.size}]] Pizza</h3>
+    <hr/>
+    <table>
+        <tr>
+            <td class="_tr"><b>Crust: </b></td>
+            <td class="_td">[[${pizza.dough.crust}]]</td>
+        </tr>
+        <tr>
+            <td class="_tr"><b>Sauce: </b></td>
+            <td class="_td">[[${pizza.dough.sauceType}]]</td>
+        </tr>
+        <tr>
+            <td class="_tr"><b>Bake: </b></td>
+            <td class="_td">[[${pizza.dough.bake}]]</td>
+        </tr>
+        <tr>
+            <td class="_tr"><b>Seasoning: </b></td>
+            <td class="_td">[[${pizza.dough.seasoning}]]</td>
+        </tr>
+        <tr>
+            <td class="_tr"><b>Cut: </b></td>
+            <td class="_td">[[${pizza.dough.cut}]]</td>
+        </tr>
+        <tr>
+            <td class="_tr"><b>Cheese: </b></td>
+            <td class="_td">[[${pizza.dough.cheese}]]</td>
+        </tr>
+    </table>
+    <table style="margin-left: 80px">
+        <h4 style="margin-left: 40px"><b>Toppings</b></h4>
+        <tr th:each="topping, iStat : ${pizza.toppings}">
+            <td>[[${topping.name}]]</td>
+            <td style="padding-left: 10px" th:text="${iStat.index>1}?'extra  0.75&cent':''"></td>
+        </tr>
+    </table>
+    <hr/>
+    <h4 style="margin-left: 60px"><b>TOTAL</b><span style="padding-left: 15px"><b>$ [[${pizza.price}]]</b></span></h4>
+</div>
+<div class="container" style="margin-top: 60px">
+    <button type="button"  class="btn btn-link" sec:authorize="!isFullyAuthenticated()" id="regis_b">Register & Earn Rewards</button>
+    <form th:action="@{/placeorder}" th:object="${order}" method="post" id="form">
+        <div class="form-group row">
+            <div class="col-xs-2">
+                <label for="ex1">Name </label>
+                <input class="form-control input-sm" id="ex1" type="text" placeholder="Name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-2">
+                <label for="ex2">Credit card number</label>
+                <input class="form-control input-sm" id="ex2" type="text" placeholder="xxxx-xxxx-xxxx-xxxx">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-2">
+                <label for="ex3">Phone number</label>
+                <input class="form-control input-sm" id="ex3" type="text" placeholder="123-456-7890"
+                       th:field="*{phoneNumber}">
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="place_order">Place Order</button>
+        <button type="button" class="btn btn-danger" id="cancel">Cancel Order</button>
+    </form>
+</div>
+</body>
+</html>
+

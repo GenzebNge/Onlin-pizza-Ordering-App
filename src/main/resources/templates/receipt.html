@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Receipt</title>
+    <span th:include="base::bootstrap_link"></span>
+</head>
+<body>
+<span th:replace="base::navlinks"></span>
+
+<div class="container">
+    <h2>Receipt</h2>
+    [[${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}]]<br/>
+    <hr/>
+
+</div>
+
+</body>
+</html>

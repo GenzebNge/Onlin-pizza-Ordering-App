@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <span th:include="base::bootstrap_link"></span>
+</head>
+<body>
+<div th:replace="base::navlinks"></div>
+<p style="clear: both"></p>
+<div class="container">
+    <div class="row">
+
+        <div id="hp1" class="col-lg-3">
+            <div class="hp2">
+                <div class="hp3"><h3>Build Your Own Pizza</h3>
+                </div>
+                <div class="hp4">
+                    <img class="hp4img"></div>
+                <div style="padding-left: 10px">
+                    Select your size, crust and favorite toppings.
+                </div>
+                <div class="hp5">
+                    <a th:href="@{/create}"><button class="order_button">ORDER</button></a>
+                </div>
+            </div>
+        </div>
+
+        <div id="hp1" class="col-lg-3" th:each="menuItem : ${menuItems}">
+            <div class="hp2">
+                <div class="hp3"><h3>[[${menuItem.name}]]</h3>
+                </div>
+                <div class="hp4">
+                    <img th:src="${menuItem.image}" class="hp4img"></div>
+                <div style="padding-left: 10px">
+                    <small>[[${menuItem.description}]]</small>
+                </div>
+                <div class="hp5">
+                   <button class="order_button">ORDER</button>
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Pizza</title>
+    <link rel="stylesheet" href="css/createpizza.css">
+    <span th:include="base::bootstrap_link"></span>
+    <script>
+        $(function () {
+            var count = 0;
+            $('.checkbox_topping_name').change(function () {
+                var id = $(this).attr('id');
+                if (this.checked) {
+                    count++;
+                    if (count == 3) {
+                        $('#myModal').modal('show');
+                    }
+                    $("#img_" + id).show();
+                } else {
+                    count--;
+                    $("#img_" + id).hide();
+                }
+            });
+
+
+            $('.select_topping_amount').change(function () {
+                var id = $(this).attr('id');
+                var selectedOption = $(this).val();
+                switch (selectedOption) {
+                    case 'light' :
+                        $("#img_" + id).attr('src', 'image/ingredients_light/' + id + '_light.PNG');
+                        break;
+                    case 'normal' :
+                        $("#img_" + id).attr('src', 'image/ingredients/' + id + '.PNG');
+                        break;
+                    case 'extra' :
+                        $("#img_" + id).attr('src', 'image/ingredients_extra/' + id + '_extra.PNG');
+                        break;
+                }
+            });
+
+            $('#button_small_size').click(function () {
+                $(this).css('background', 'gray');
+                $('#button_medium_size').css('background', 'white');
+                $('#button_large_size').css('background', 'white');
+                $('#pizza_size').val('Small');
+            });
+            $('#button_medium_size').click(function () {
+                $(this).css('background', 'gray');
+                $('#button_small_size').css('background', 'white');
+                $('#button_large_size').css('background', 'white');
+                $('#pizza_size').val('Medium');
+            });
+            $('#button_large_size').click(function () {
+                $(this).css('background', 'gray');
+                $('#button_small_size').css('background', 'white');
+                $('#button_medium_size').css('background', 'white');
+                $('#pizza_size').val('Large');
+            });
+
+            $('#checkbox_sauce').click(function () {
+                if ($(this).prop('checked') == true) {
+                    $('#sauce_div').css('display', 'block');
+                }
+                else if ($(this).prop('checked') == false) {
+                    $('#sauce_div').css('display', 'none');
+                }
+            })
+            $('#button_medium_size').css('background', 'gray');
+            $('#pizza_size').val('Medium');
+
+            $('#create_pizza_button').click(function () {
+            $('#confirm_').modal('show');
+            $('#submit_form').click(function () {
+                $('#form').submit();
+            });
+
+            });
+
+
+
+        });
+    </script>
+</head>
+
+<body id="create_body_background">
+<span th:replace="base::navlinks"></span>
+<p style="clear: both"></p>
+
+<div class="modal fade" id="myModal" role="dialog" style="margin-top: 250px">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Additional Topping</h4>
+            </div>
+            <div class="modal-body">
+                <p>For any additional topping 0.75&cent each</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirm_" role="dialog" style="margin-top: 250px">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Confirm</h4>
+            </div>
+            <div class="modal-body">
+                <p>Finished building your pizza?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="submit_form">Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="div1">
+    <img src="image/blankpizza/blankpizza.png" id="img_blankpizza"/>
+    <img src="image/ingredients/ham.PNG" height="500" width="500" id="img_ham" class="ingrediments"/>
+    <img src="image/ingredients/bacon.PNG" height="500" width="500" id="img_bacon" class="ingrediments"/>
+    <img src="image/ingredients/banana_pepper.PNG" height="500" width="500" id="img_banana_pepper"
+         class="ingrediments"/>
+    <img src="image/ingredients/beef.PNG" height="500" width="500" id="img_beef" class="ingrediments"/>
+    <img src="image/ingredients/black_olive.PNG" height="500" width="500" id="img_black_olive" class="ingrediments"/>
+    <img src="image/ingredients/premium_chicken.PNG" height="500" width="500" id="img_premium_chicken"
+         class="ingrediments"/>
+    <img src="image/ingredients/garlic.PNG" height="500" width="500" id="img_garlic" class="ingrediments"/>
+    <img src="image/ingredients/hot_sauce.PNG" height="500" width="500" id="img_hot_sauce" class="ingrediments"/>
+    <img src="image/ingredients/italian_sausage.PNG" height="500" width="500" id="img_italian_sausage"
+         class="ingrediments"/>
+    <img src="image/ingredients/jalepino_pepper.PNG" height="500" width="500" id="img_jalepino_pepper"
+         class="ingrediments"/>
+    <img src="image/ingredients/onion.PNG" height="500" width="500" id="img_onion" class="ingrediments"/>
+    <img src="image/ingredients/pepperoni.PNG" height="500" width="500" id="img_pepperoni" class="ingrediments"/>
+    <img src="image/ingredients/philly_steak.PNG" height="500" width="500" id="img_philly_steak" class="ingrediments"/>
+    <img src="image/ingredients/salami.PNG" height="500" width="500" id="img_salami" class="ingrediments"/>
+    <img src="image/ingredients/mushroom.PNG" height="500" width="500" id="img_mushroom" class="ingrediments"/>
+    <img src="image/ingredients/pineapple.PNG" height="500" width="500" id="img_pineapple" class="ingrediments"/>
+    <img src="image/ingredients/green_pepper.PNG" height="500" width="500" id="img_green_pepper" class="ingrediments"/>
+    <img src="image/ingredients/spinach.PNG" height="500" width="500" id="img_spinach" class="ingrediments"/>
+    <img src="image/ingredients/roasted_red_pepper.PNG" height="500" width="500" id="img_roasted_red_pepper"
+         class="ingrediments"/>
+    <img src="image/ingredients/feta_cheese.PNG" height="500" width="500" id="img_feta_cheese" class="ingrediments"/>
+</div>
+
+
+<form th:action="@{/create}" th:object="${pizza}" method="post" id="form">
+
+    <div id="div_choose_your_size">
+        <div style="text-align: center; font-size: larger"><b>CHOOSE YOUR SIZE</b></div>
+        <input type="hidden" value="" id="pizza_size" name="pizza_size_name">
+        <button id="button_small_size" type="button">Small <h4 style="margin-top: 2px">7<sup>.99</sup></h4></button>
+        <button id="button_medium_size" type="button">Medium <h3>8<sup>.99</sup></h3></button>
+        <button id="button_large_size" type="button">Large <h3>9<sup>.99</sup></h3></button>
+    </div>
+    <p style="clear: both"></p>
+    <div id="div_choose_your_crust">
+        <span style="font-size: larger; margin-left: 200px"><b>CHOOSE YOUR CRUST</b></span><br/><br/>
+        <input type="radio" name="dough.crust" value="hand_tossed" checked> HAND TOSSED<br>
+        <small class="choose_your_crust_text">Garlic-seasoned crust with a rich, buttery taste.</small>
+        <br/><br/>
+        <input type="radio" name="dough.crust" value="crunchy_thin_crust"> CRUNCHY THIN CRUST<br>
+        <small class="choose_your_crust_text">Thin enough for the optimum crispy to crunchy ratio and square cut to be
+            perfectly sharable.
+        </small>
+        <br/><br/>
+        <input type="radio" name="dough.crust" value="handmade_pan"> HAND MADE PAN<br>
+        <small class="choose_your_crust_text">Two layers of cheese, toppings to the edge, baked in a pan for a crust
+            that is golden and crispy with a buttery taste.
+        </small>
+
+    </div>
+
+    <p style="clear: both"></p>
+
+    <div id="special_instructions">
+        <b>BAKE</b><br/><br/>
+        <input type="radio" name="dough.bake" value="well_done"> Well Done<br>
+        <input type="radio" name="dough.bake" value="normal_bake" checked> Normal Bake<br><br/>
+
+        <b>SEASONING</b><br/><br/>
+        <input type="radio" name="dough.seasoning" value="garlic_seasoned_crust" checked> Garlic Seasoned Crust<br>
+        <input type="radio" name="dough.seasoning" value="no_garlic_seasoned_crust"> No Garlic Seasoned Crust<br><br/>
+
+        <b>CUT</b><br/><br/>
+        <input type="radio" name="dough.cut" value="pie_cut" checked> Pie Cut<br>
+        <input type="radio" name="dough.cut" value="square_cut"> Square Cut<br/>
+        <input type="radio" name="dough.cut" value="uncut"> Uncut<br>
+
+    </div>
+    <p style="clear: both"></p>
+
+    <div id="choose_cheese_and_sauce">
+        <span style="font-size: larger; margin-left: 200px"><b>CHOOSE CHEESE AND SAUCE</b></span><br/><br/>
+        <b>CHEESE?</b><br/>
+        Cheese
+        <select id="select_cheese" name="dough.cheese">
+            <option value="none">none</option>
+            <option value="light">light</option>
+            <option value="normal" selected="true">normal</option>
+            <option value="extra">extra</option>
+        </select><br/><br/>
+
+        <b>CHOOSE A SAUCE</b><br/><br/>
+        Sauce <input type="checkbox" name="dough.sauce" id="checkbox_sauce" checked><br/><br/>
+        <div id="sauce_div"><input type="radio" name="dough.sauceType" value="robust_inspired_tomato_sauce" checked>
+            Robust Inspired Tomato Sauce<br>
+            <input type="radio" name="dough.sauceType" value="hearty_marinara_sauce"> Hearty Marinara Sauce<br/>
+            <input type="radio" name="dough.sauceType" value="bbq_sauce"> BBQ Sauce<br>
+            <input type="radio" name="dough.sauceType" value="garlic_parmesan_white_sauce"> Garlic Parmesan White
+            Sauce<br>
+            <input type="radio" name="dough.sauceType" value="alfredo_sauce"> Alfredo Sauce<br>
+        </div>
+    </div>
+
+    <p style="clear: both"></p>
+
+    <div id="choose_toppings_meat"><br/><br/>
+        <span style="font-size: larger; margin-left: 200px"><b>CHOOSE TOPPINGS</b></span><br/>
+        <div th:each="topping, itemStat : ${toppings}">
+            <b>[[${topping.name}]]</b><br/><input type="checkbox" th:field="*{toppings[__${itemStat.index}__].name}"
+                                                  th:value="${topping.name}" th:id="${topping.name}"
+                                                  class="checkbox_topping_name">
+            <select th:id="${topping.name}" th:field="*{toppings[__${itemStat.index}__].amount}"
+                    class="select_topping_amount">
+                <option value="normal">normal</option>
+                <option value="light">light</option>
+                <option value="extra">extra</option>
+            </select><br/>
+            - - - - - - - - - - <br/>
+        </div>
+    </div>
+
+    <button type="button" value="CREATE" id="create_pizza_button">CREAT</button>
+</form>
+
+</body>
+</html>
+

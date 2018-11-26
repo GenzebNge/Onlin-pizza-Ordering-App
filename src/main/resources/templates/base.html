@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Base</title>
+  <span th:fragment="bootstrap_link">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/homepageStylesheet.css">
+      </span>
+
+</head>
+<body>
+<div th:fragment="navlinks">
+    <nav class="navbar navbar-dark bg-danger" id="nav_main">
+        <div class="container-fluid">
+            <div class="navbar-header" id="nav-header">
+                <img src="logo/logo.PNG" id="nav_logo"/></div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a th:href="@{/}">HOME</a></li>
+                <li><a th:href="@{/location}">LOCATION</a></li>
+                <li><a th:href="@{/menu}"><b>ORDER ONLINE</b></a></li>
+                <li sec:authorize="hasAuthority('user')"><a th:href="@{/logout}">Logout [[${#authentication.name}]]</a></li>
+                <li sec:authorize="hasAuthority('admin')"><a th:href="@{/admin}">Admin Page</a></ul>
+            <ul class="nav navbar-nav navbar-right" id="nav_ul">
+                <li th:href="@{/reward}" id="glyphiconLogin"><span class="glyphicon glyphicon-user"></span></li>
+                <li style="margin-right: 20px; margin-top: -5px"><span id="sign_in_earn"> <a th:href="@{/login}"><button id="button_sign_in">SIGN IN & EARN<br> REWARDS</button></a></span></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="admin_nav">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/admin}">Admin</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a th:href="@{/}">User Page</a></li>
+                <li><a th:href="@{/admin/menu}">Menu</a></li>
+                <li><a th:href="@{/admin/toppings}">Toppings</a></li>
+                <li><a th:href="@{/admin/customers}">Customers</a></li>
+                <li><a th:href="@{/logout}">Logout [[${#authentication.name}]]</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

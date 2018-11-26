@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+    <span th:include="base::bootstrap_link"></span>
+</head>
+<body>
+<span th:replace="base::admin_nav"></span>
+<div class="container" id="adm_div_1" style="margin-bottom: 20px">
+    <div class="row">
+        <div id="adm_div_2" class="col col-lg-3">
+            <button type="button" id="button_1"></button>
+            <button type="button" id="button_2"></button>
+            <button type="button" id="button_3"></button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>List of Orders</h2>
+        <button class="col col-lg-3" id="adm_div_3"><h1>$ [[${total}]]</h1></button>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Size</th>
+            <th>Crust</th>
+            <th>Bake</th>
+            <th>Seasoning</th>
+            <th>Sauce Type</th>
+            <th>Toppings</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td>[[${order.pizza.dough.size}]]</td>
+            <td>[[${order.pizza.dough.crust}]]</td>
+            <td>[[${order.pizza.dough.bake}]]</td>
+            <td>[[${order.pizza.dough.seasoning}]]</td>
+            <td>[[${order.pizza.dough.sauceType}]]</td>
+            <td th:each="topping : ${order.pizza.toppings}">[[${topping.name}]]</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+</div>
+</body>
+</html>
