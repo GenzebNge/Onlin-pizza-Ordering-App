@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+    <span th:include="base::bootstrap_link"></span>
+</head>
+<body>
+<span th:replace="base::navlinks"></span>
+
+<div class="container">
+    <h2>Past Orders</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Size</th>
+            <th>Crust</th>
+            <th>Bake</th>
+            <th>Seasoning</th>
+            <th>Sauce Type</th>
+            <th>Toppings</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td>[[${order.pizza.dough.size}]]</td>
+            <td>[[${order.pizza.dough.crust}]]</td>
+            <td>[[${order.pizza.dough.bake}]]</td>
+            <td>[[${order.pizza.dough.seasoning}]]</td>
+            <td>[[${order.pizza.dough.sauceType}]]</td>
+            <td th:each="topping : ${order.pizza.toppings}">[[${topping.name}]]</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+</div>
+
+</body>
+</html>
