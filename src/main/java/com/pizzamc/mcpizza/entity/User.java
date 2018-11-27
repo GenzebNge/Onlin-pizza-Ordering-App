@@ -3,6 +3,9 @@ package com.pizzamc.mcpizza.entity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 
 @Entity
@@ -13,16 +16,26 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name = "email", nullable = false)
+    @NotNull
+    @Size(min = 3)
     private String email;
     @Column(name = "password")
+    @NotNull
+    @Size(min = 3)
     private String password;
     @Column(name = "first_name")
+    @NotNull
+    @Size(min = 3)
     private String firstName;
     @Column(name = "last_name")
+    @NotNull
+    @Size(min = 3)
     private String lastName;
     @Column(name = "enabled")
     private boolean enabled;
     @Column(name = "username")
+    @NotNull
+    @Size(min = 3)
     private String username;
 
     @ManyToMany(fetch = FetchType.EAGER)

@@ -17,6 +17,7 @@
                 <h3>First Name</h3>
                 <input type="text" class="form-control" id="firstName"
                        placeholder="First Name" th:field="*{firstName}">
+                <span th:if="${#fields.hasErrors('firstName')}"><small style="color: red">First name at least has to be 3 characters.</small></span>
             </div>
         </div>
 
@@ -25,6 +26,7 @@
                 <h3>Last Name</h3>
                 <input type="text" class="form-control" id="lastName"
                        placeholder="Last Name" name="lastName" th:field="*{lastName}">
+                <span th:if="${#fields.hasErrors('lastName')}"><small style="color: red">Last name at least has to be 3 characters.</small></span>
             </div>
         </div>
 
@@ -33,6 +35,8 @@
                 <h3>Email</h3>
                 <input type="text" class="form-control" id="email"
                        placeholder="Email" name="email" value="" th:field="*{email}">
+                <span th:if="${#fields.hasErrors('email')}"><small style="color: red">Email at least has to be 3 characters.</small></span>
+
             </div>
         </div>
 
@@ -40,14 +44,18 @@
             <div class="col-sm-4">
                 <h3>Username</h3>
                 <input type="text" class="form-control" id="username"
-                       placeholder="Username" name="username" th:field="*{username}"></div>
+                       placeholder="Username" name="username" th:field="*{username}">
+            <span th:if="${#fields.hasErrors('username')}"><small style="color: red">Username at least has to be 3 characters.</small></span>
+            </div>
         </div>
 
         <div class="form-group row">
             <div class="col-sm-4">
                 <h3>Password</h3>
                 <input type="password" class="form-control" id="password"
-                       placeholder="Password" name="password" th:field="*{password}"></div>
+                       placeholder="Password" name="password" th:field="*{password}">
+            <span th:if="${#fields.hasErrors('password')}"><small style="color: red">Password at least has to be 3 characters.</small></span>
+            </div>
         </div>
 
         <div class="form-group row">

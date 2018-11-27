@@ -8,12 +8,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.Arrays;
 
 @Controller
@@ -44,6 +47,12 @@ public class HomeController {
     @RequestMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @RequestMapping("/order{id}")
+    public String order(@PathVariable("id")long id,Model model){
+        model.addAttribute("menuItem",menuItemRepository.findById(id));
+        return "orderfrommenu";
     }
 
     @GetMapping("/create")
@@ -77,7 +86,10 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public String registerProcess(User user) {
+    public String registerProcess(@Valid User user, BindingResult result) {
+        if(result.hasErrors()){
+            return "/register";
+        }
         Role role = roleRepository.findByRole("user");
         if (role == null) {
             Role newRole = new Role();
@@ -90,6 +102,11 @@ public class HomeController {
             userRepository.save(user);
         }
         return "redirect:/login";
+    }
+    @RequestMapping("/account")
+    public String account(Model model){
+        model.addAttribute("orders", orderRepository.findByUser(getUser()));
+        return "account";
     }
 
     @RequestMapping("/location")
@@ -105,8 +122,8 @@ public class HomeController {
         pizzaRepository.save(pizza);
         order.setPizza(pizza);
         order.setUser(getUser());
-        System.out.println(order);
         orderRepository.save(order);
+        createPizzaService.toppingCounter(pizza.getToppings());
         createPizzaService.sendMessage(order.getPhoneNumber(), pizza);
         session.removeAttribute("piz_req");
        return "receipt";

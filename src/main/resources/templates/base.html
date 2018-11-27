@@ -20,6 +20,7 @@
                 <li class="active"><a th:href="@{/}">HOME</a></li>
                 <li><a th:href="@{/location}">LOCATION</a></li>
                 <li><a th:href="@{/menu}"><b>ORDER ONLINE</b></a></li>
+                <li sec:authorize="hasAuthority('user')"><a th:href="@{/account}"><b>Account</b></a></li>
                 <li sec:authorize="hasAuthority('user')"><a th:href="@{/logout}">Logout [[${#authentication.name}]]</a></li>
                 <li sec:authorize="hasAuthority('admin')"><a th:href="@{/admin}">Admin Page</a></ul>
             <ul class="nav navbar-nav navbar-right" id="nav_ul">

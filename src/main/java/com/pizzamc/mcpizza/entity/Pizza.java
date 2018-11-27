@@ -18,6 +18,7 @@ public class Pizza {
     @OneToMany
     private List<Topping> toppings;
     private double price;
+    private String name;
 
     public Pizza(){
         this.dough = new Dough();
@@ -30,6 +31,14 @@ public class Pizza {
 
     public double getPrice() {
         return price;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public long getId() {

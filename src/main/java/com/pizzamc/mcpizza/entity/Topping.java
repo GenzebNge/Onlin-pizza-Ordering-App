@@ -1,9 +1,6 @@
 package com.pizzamc.mcpizza.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Topping {
@@ -13,6 +10,8 @@ public class Topping {
     private long id;
     private String name;
     private String amount;
+    @ManyToOne
+    private Pizza pizza;
 
     public long getId() {
         return id;
@@ -44,6 +43,7 @@ public class Topping {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", amount='" + amount + '\'' +
+                ", pizza=" + pizza +
                 '}';
     }
 }

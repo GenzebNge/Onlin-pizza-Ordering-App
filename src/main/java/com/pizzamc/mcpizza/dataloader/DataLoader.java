@@ -131,31 +131,31 @@ public class DataLoader implements CommandLineRunner {
         buffaloChicken.setName("Buffalo Chicken");
         buffaloChicken.setDescription("Grilled chicken breast, fresh onions, provolone, American cheese, cheddar,and drizzled with a hot sauce.");
         buffaloChicken.setImage("https://res.cloudinary.com/dlkfcmw1x/image/upload/v1542946044/Pizza%20Image/buffalo_chicken.png");
-        buffaloChicken.setPrice(13);
+        buffaloChicken.setPrice(11);
 
         MenuItem caliChichenBacon = new MenuItem();
         caliChichenBacon.setName("Cali Chicken Bacon");
         caliChichenBacon.setDescription("Grilled chicken breast, garlic Parmesan white sauce, smoked bacon, tomatoes, provolone and cheese made with 100% real mozzarella.");
         caliChichenBacon.setImage("https://res.cloudinary.com/dlkfcmw1x/image/upload/v1542946044/Pizza%20Image/cali_chicken_bacon_ranch.png");
-        caliChichenBacon.setPrice(13);
+        caliChichenBacon.setPrice(14);
 
         MenuItem deluxe = new MenuItem();
         deluxe.setName("Deluxe");
         deluxe.setDescription("Pepperoni, Italian sausage, fresh green peppers, fresh mushrooms, fresh onions and cheese made with 100% real mozzarella.");
         deluxe.setImage("https://res.cloudinary.com/dlkfcmw1x/image/upload/v1542946043/Pizza%20Image/deluxe.png");
-        deluxe.setPrice(13);
+        deluxe.setPrice(15);
 
         MenuItem extravaganza = new MenuItem();
         extravaganza.setName("Extravaganza");
         extravaganza.setDescription("Pepperoni, ham, Italian sausage, beef, fresh onions, fresh green peppers, fresh mushrooms and black olives.");
         extravaganza.setImage("https://res.cloudinary.com/dlkfcmw1x/image/upload/v1542946044/Pizza%20Image/extravagan_pizza.png");
-        extravaganza.setPrice(13);
+        extravaganza.setPrice(16);
 
         MenuItem honoluluHawalian = new MenuItem();
         honoluluHawalian.setName("Honolulu Hawalian");
         honoluluHawalian.setDescription("Sliced ham, smoked bacon, pineapple, roasted red peppers, provolone and cheese made with 100% real mozzarella.");
         honoluluHawalian.setImage("https://res.cloudinary.com/dlkfcmw1x/image/upload/v1542946041/Pizza%20Image/honolulu_hawalian.png");
-        honoluluHawalian.setPrice(13);
+        honoluluHawalian.setPrice(12);
 
         MenuItem meatPizza = new MenuItem();
         meatPizza.setName("Meat Pizza");
@@ -167,13 +167,13 @@ public class DataLoader implements CommandLineRunner {
         memphisBbqChicken.setName("Memphis BBQ Chicken");
         memphisBbqChicken.setDescription("Grilled chicken breast, BBQ sauce, fresh onions, cheddar, provolone and cheese made with 100% real mozzarella.");
         memphisBbqChicken.setImage("https://res.cloudinary.com/dlkfcmw1x/image/upload/v1542946043/Pizza%20Image/memphis_bbq_chicken.png");
-        memphisBbqChicken.setPrice(13);
+        memphisBbqChicken.setPrice(15);
 
         MenuItem pacificVeggie = new MenuItem();
         pacificVeggie.setName("Pacific Veggie");
         pacificVeggie.setDescription("Roasted red peppers, fresh baby spinach, fresh onions, fresh mushrooms, tomatoes, black olives, feta, provolone.");
         pacificVeggie.setImage("https://res.cloudinary.com/dlkfcmw1x/image/upload/v1542946044/Pizza%20Image/pacific_veggie.png");
-        pacificVeggie.setPrice(13);
+        pacificVeggie.setPrice(11);
 
         MenuItem phillyCheeseSteak = new MenuItem();
         phillyCheeseSteak.setName("Philly Cheese Steak");
@@ -185,13 +185,13 @@ public class DataLoader implements CommandLineRunner {
         spinach_n_feta.setName("Spinach & Feta");
         spinach_n_feta.setDescription("Creamy Alfredo sauce, fresh spinach, fresh onions, feta, Parmesan-Asiago, provolone and cheese made with 100% real mozzarella.");
         spinach_n_feta.setImage("https://res.cloudinary.com/dlkfcmw1x/image/upload/v1542946047/Pizza%20Image/spinach_feta.png");
-        spinach_n_feta.setPrice(13);
+        spinach_n_feta.setPrice(14);
 
         MenuItem ultimatePepperoni = new MenuItem();
         ultimatePepperoni.setName("Ultimate Pepperoni");
         ultimatePepperoni.setDescription("Two layers of pepperoni sandwiched between provolone, Parmesan-Asiago and cheese, sprinkled with oregano.");
         ultimatePepperoni.setImage("https://res.cloudinary.com/dlkfcmw1x/image/upload/v1542946046/Pizza%20Image/ultimate_pepperoni.png");
-        ultimatePepperoni.setPrice(13);
+        ultimatePepperoni.setPrice(11);
 
         MenuItem wisconsin6Cheese = new MenuItem();
         wisconsin6Cheese.setName("Wisconsin 6 Cheese");

@@ -40,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/*","/css/**", "/image/**","/logo/**").permitAll()
+        http.authorizeRequests().antMatchers("/","/css/**", "/image/**","/logo/**","/menu","/create","/receipt","/placeorder","/register","/location","/order","/order*").permitAll()
                 .antMatchers("/admin/**","/admin").access("hasAuthority('admin')")
                 .antMatchers("/account").access("hasAuthority('user')").anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login").permitAll().permitAll().and().httpBasic();

@@ -18,10 +18,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="order : ${orders}">
-            <td>[[${order.user.firstName}]]</td>
-            <td>[[${order.user.lastName}]]</td>
-            <td>[[${order.user.email}]]</td>
+        <tr th:each="customer : ${customers}">
+            <td>[[${customer.firstName}]]</td>
+            <td>[[${customer.lastName}]]</td>
+            <td>[[${customer.email}]]</td>
         </tr>
         </tbody>
     </table>

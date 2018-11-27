@@ -12,17 +12,20 @@
 <div class="container">
     <div class="row">
 
+
         <div id="hp1" class="col-lg-3">
             <div class="hp2">
                 <div class="hp3"><h3>Build Your Own Pizza</h3>
                 </div>
                 <div class="hp4">
-                    <img class="hp4img"></div>
+                    <img src="image/blankpizza/blankpizza.png" class="hp4img"/></div>
                 <div style="padding-left: 10px">
                     Select your size, crust and favorite toppings.
                 </div>
                 <div class="hp5">
-                    <a th:href="@{/create}"><button class="order_button">ORDER</button></a>
+                    <a th:href="@{/create}">
+                        <button class="order_button">ORDER</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -37,10 +40,11 @@
                     <small>[[${menuItem.description}]]</small>
                 </div>
                 <div class="hp5">
-                   <button class="order_button">ORDER</button>
+                   <a th:href="@{/order{id}(id=${menuItem.id})}"><button class="order_button">ORDER</button></a>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 </body>
 </html>

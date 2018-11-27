@@ -3,10 +3,7 @@ package com.pizzamc.mcpizza.controller;
 
 import com.cloudinary.utils.ObjectUtils;
 import com.pizzamc.mcpizza.cloudinary.CloudinaryConfig;
-import com.pizzamc.mcpizza.entity.MenuItem;
-import com.pizzamc.mcpizza.entity.Order;
-import com.pizzamc.mcpizza.entity.Pizza;
-import com.pizzamc.mcpizza.entity.Topping;
+import com.pizzamc.mcpizza.entity.*;
 import com.pizzamc.mcpizza.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +31,8 @@ public class AdminController {
     UserRepository userRepository;
     @Autowired
     PizzaRepository pizzaRepository;
+    @Autowired
+    ToppingCounterRepository toppingCounterRepository;
 
     @RequestMapping("/admin")
     public String admin(Model model){
@@ -44,6 +43,7 @@ public class AdminController {
         total = Double.parseDouble(new DecimalFormat("##.##").format(total));
         model.addAttribute("total",total);
         model.addAttribute("orders",orderRepository.findAll());
+        List<ToppingCounter> top = toppingCounterRepository.findTop3ByOrderByCount();
         return "admin";
     }
 
