@@ -144,7 +144,11 @@ public class HomeController {
         order.setUser(getUser());
         orderRepository.save(order);
         createPizzaService.toppingCounter(pizza.getToppings());
-        createPizzaService.sendMessage(order.getPhoneNumber(), pizza);
+        try {
+            createPizzaService.sendMessage(order.getPhoneNumber(), pizza);
+        } catch (Exception e){
+
+        };
         model.addAttribute("order", order);
         session.removeAttribute("piz_req");
        return "receipt";
