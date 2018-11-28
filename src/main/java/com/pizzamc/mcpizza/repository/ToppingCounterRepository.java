@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ToppingCounterRepository extends CrudRepository<ToppingCounter, Long> {
     ToppingCounter findByName(String string);
-    List<ToppingCounter> findTop3ByOrderByCount();
+    List<ToppingCounter> findTop3ByOrderByCountDesc();
 
 
 

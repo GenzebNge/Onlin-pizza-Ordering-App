@@ -3,6 +3,7 @@ package com.pizzamc.mcpizza.service;
 import com.pizzamc.mcpizza.entity.Pizza;
 import com.pizzamc.mcpizza.entity.Topping;
 import com.pizzamc.mcpizza.entity.ToppingCounter;
+import com.pizzamc.mcpizza.repository.PizzaRepository;
 import com.pizzamc.mcpizza.repository.ToppingCounterRepository;
 import com.pizzamc.mcpizza.repository.ToppingRepository;
 import com.twilio.Twilio;
@@ -21,6 +22,8 @@ public class CreatePizzaService {
     ToppingRepository toppingRepository;
     @Autowired
     ToppingCounterRepository toppingCounterRepository;
+    @Autowired
+    PizzaRepository pizzaRepository;
 
 
         public static final String ACCOUNT_SID =
@@ -95,4 +98,23 @@ public class CreatePizzaService {
             }
         }
     }
+
+    public Double totalSale(){
+
+        double total = 0;
+        for (Pizza pizza : pizzaRepository.findAll()) {
+            total += pizza.getPrice();
+        }
+        return Double.parseDouble(new DecimalFormat("##.##").format(total));
+    }
+    public void sendMessage(String number, String str){
+
+        String string = "";
+
+        Twilio.init(ACCOUNT_SID,AUTH_TOKEN);
+        Message message = Message.creator(new PhoneNumber(number),
+                new PhoneNumber("+15712004614"),"Thank you for ordering at MC PIZZA, your order "+str+" "+" will be ready in few minutes. ").create();
+
+    }
+
 }

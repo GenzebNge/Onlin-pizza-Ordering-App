@@ -11,9 +11,35 @@
 <div class="container">
     <h2>Receipt</h2>
     [[${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}]]<br/>
+    XXXX-XXXX-XXXX-1680
     <hr/>
-
+    <h3>[[${order.pizza.name}]][[${order.pizza.dough.size}]] Pizza</h3>
+<hr/>
+<table>
+    <tr>
+        <td class="_tr"><b>Crust: </b></td>
+        <td class="_td">[[${order.pizza.dough.crust}]]</td>
+    </tr>
+    <tr>
+        <td class="_tr"><b>Bake: </b></td>
+        <td class="_td">[[${order.pizza.dough.bake}]]</td>
+    </tr>
+    <tr>
+        <td class="_tr"><b>Seasoning: </b></td>
+        <td class="_td">[[${order.pizza.dough.seasoning}]]</td>
+    </tr>
+    <tr>
+        <td class="_tr"><b>Cut: </b></td>
+        <td class="_td">[[${order.pizza.dough.cut}]]</td>
+    </tr>
+</table>
+    <table style="margin-left: 80px">
+        <tr th:each="topping : ${order.pizza.toppings}">
+            <td>[[${topping.name}]]</td>
+        </tr>
+    </table>
+    <hr/>
+    <h4 style="margin-left: 60px"><b>TOTAL</b><span style="padding-left: 15px"><b>$ [[${order.pizza.price}]]</b></span></h4>
 </div>
-
 </body>
 </html>

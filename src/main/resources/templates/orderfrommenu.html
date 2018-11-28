@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Order</title>
     <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/createpizza.css">
     <span th:include="base::bootstrap_link"></span>
     <script>
         $(function () {
@@ -16,7 +17,7 @@
                 window.location.replace("/menu");
             });
             $('#place_order').click(function () {
-
+                $('#form').submit();
             });
             $('#regis_b').click(function () {
                 window.location.replace("/register")
@@ -58,9 +59,43 @@
     </div>
 </div>
 <hr/>
-<div class="container" style="margin-top: 60px">
+<form th:action="@{/order}" method="post" th:object="${dough}" id="form">
+
+<div id="div_choose_your_crust" style="background-color: #E7E7E7">
+    <span style="font-size: larger; margin-left: 200px"><b>CHOOSE YOUR CRUST</b></span><br/><br/>
+    <input type="radio" name="crust" value="hand_tossed" checked> HAND TOSSED<br>
+    <small class="choose_your_crust_text">Garlic-seasoned crust with a rich, buttery taste.</small>
+    <br/><br/>
+    <input type="radio" name="crust" value="crunchy_thin_crust"> CRUNCHY THIN CRUST<br>
+    <small class="choose_your_crust_text">Thin enough for the optimum crispy to crunchy ratio and square cut to be
+        perfectly sharable.
+    </small>
+    <br/><br/>
+    <input type="radio" name="crust" value="handmade_pan"> HAND MADE PAN<br>
+    <small class="choose_your_crust_text">Two layers of cheese, toppings to the edge, baked in a pan for a crust
+        that is golden and crispy with a buttery taste.
+    </small>
+
+</div>
+
+<div id="special_instructions" style="background-color: #E7E7E7">
+    <b>BAKE</b><br/><br/>
+    <input type="radio" name="bake" value="well_done"> Well Done<br>
+    <input type="radio" name="bake" value="normal_bake" checked> Normal Bake<br><br/>
+
+    <b>SEASONING</b><br/><br/>
+    <input type="radio" name="seasoning" value="garlic_seasoned_crust" checked> Garlic Seasoned Crust<br>
+    <input type="radio" name="seasoning" value="no_garlic_seasoned_crust"> No Garlic Seasoned Crust<br><br/>
+
+    <b>CUT</b><br/><br/>
+    <input type="radio" name="cut" value="pie_cut" checked> Pie Cut<br>
+    <input type="radio" name="cut" value="square_cut"> Square Cut<br/>
+    <input type="radio" name="cut" value="uncut"> Uncut<br>
+
+</div>
+</form>
+<div class="container" style="margin-top: 60px; margin-bottom: 60px">
     <button type="button"  class="btn btn-link" style="font-size: larger" sec:authorize="!isFullyAuthenticated()" id="regis_b">Register & Earn Rewards</button>
-    <form action="" method="post">
         <div class="form-group row">
             <div class="col-xs-2">
                 <label for="ex1">Name </label>
@@ -75,13 +110,14 @@
         </div>
         <div class="form-group row">
             <div class="col-xs-2">
+
                 <label for="ex3">Phone number</label>
                 <input class="form-control input-sm" id="ex3" type="text" placeholder="123-456-7890">
             </div>
         </div>
         <button type="button" class="btn btn-primary" id="place_order">Place Order</button>
         <button type="button" class="btn btn-danger" id="cancel">Cancel Order</button>
-    </form>
+
 </div>
 </body>
 </html>

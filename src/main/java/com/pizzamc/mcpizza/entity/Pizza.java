@@ -75,7 +75,8 @@ public class Pizza {
                 "id=" + id +
                 ", dough=" + dough +
                 ", toppings=" + toppings +
+                ", price=" + price +
+                ", name='" + name + '\'' +
                 '}';
     }
-
 }

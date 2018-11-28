@@ -50,14 +50,34 @@ public class HomeController {
     }
 
     @RequestMapping("/order{id}")
-    public String order(@PathVariable("id")long id,Model model){
+    public String order(@PathVariable("id")long id,Model model, HttpServletRequest request){
         model.addAttribute("menuItem",menuItemRepository.findById(id));
+        MenuItem menuItem = menuItemRepository.findById(id);
+        Pizza pizza = new Pizza();
+        pizza.setPrice(menuItem.getPrice());
+        pizza.setName(menuItem.getName());
+        request.getSession().setAttribute("mPizza", pizza);
+        model.addAttribute("order", new Order());
+        model.addAttribute("dough", new Dough());
         return "orderfrommenu";
+    }
+    @PostMapping("/order")
+    public String orderProcess(Dough dough, Order order, HttpServletRequest request, Model model){
+        Pizza mPizza = (Pizza)request.getSession().getAttribute("mPizza");
+        doughRepository.save(dough);
+        mPizza.setDough(dough);
+        pizzaRepository.save(mPizza);
+        order.setPizza(mPizza);
+        order.setUser(getUser());
+        orderRepository.save(order);
+        //createPizzaService.sendMessage(order.getPhoneNumber(), mPizza.getName());
+        model.addAttribute("order", order);
+        request.getSession().removeAttribute("mPizza");
+        return "receipt";
     }
 
     @GetMapping("/create")
     public String createPizza(Model model) {
-
         model.addAttribute("pizza", createPizzaService.pizzaObj());
         model.addAttribute("toppings", toppingRepository.findAll());
         return "createpizza";
@@ -115,7 +135,7 @@ public class HomeController {
     }
 
     @PostMapping("/placeorder")
-    public String placeOrder(Order order, HttpSession session){
+    public String placeOrder(Order order, HttpSession session, Model model){
         Pizza pizza = (Pizza)session.getAttribute("piz_req");
         doughRepository.save(pizza.getDough());
         toppingRepository.saveAll(pizza.getToppings());
@@ -125,6 +145,7 @@ public class HomeController {
         orderRepository.save(order);
         createPizzaService.toppingCounter(pizza.getToppings());
         createPizzaService.sendMessage(order.getPhoneNumber(), pizza);
+        model.addAttribute("order", order);
         session.removeAttribute("piz_req");
        return "receipt";
     }

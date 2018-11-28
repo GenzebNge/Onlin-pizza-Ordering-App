@@ -5,6 +5,7 @@ import com.cloudinary.utils.ObjectUtils;
 import com.pizzamc.mcpizza.cloudinary.CloudinaryConfig;
 import com.pizzamc.mcpizza.entity.*;
 import com.pizzamc.mcpizza.repository.*;
+import com.pizzamc.mcpizza.service.CreatePizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,17 +34,16 @@ public class AdminController {
     PizzaRepository pizzaRepository;
     @Autowired
     ToppingCounterRepository toppingCounterRepository;
+    @Autowired
+    CreatePizzaService createPizzaService;
 
     @RequestMapping("/admin")
     public String admin(Model model){
-        double total = 0;
-        for (Pizza pizza : pizzaRepository.findAll()) {
-            total += pizza.getPrice();
-        }
-        total = Double.parseDouble(new DecimalFormat("##.##").format(total));
-        model.addAttribute("total",total);
+
+        model.addAttribute("total",createPizzaService.totalSale());
         model.addAttribute("orders",orderRepository.findAll());
-        List<ToppingCounter> top = toppingCounterRepository.findTop3ByOrderByCount();
+        List<ToppingCounter> top = toppingCounterRepository.findTop3ByOrderByCountDesc();
+        model.addAttribute("top", top);
         return "admin";
     }
 

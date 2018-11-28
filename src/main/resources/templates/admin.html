@@ -10,16 +10,14 @@
 <div class="container" id="adm_div_1" style="margin-bottom: 20px">
     <div class="row">
         <div id="adm_div_2" class="col col-lg-3">
-            <button type="button" id="button_1"></button>
-            <button type="button" id="button_2"></button>
-            <button type="button" id="button_3"></button>
+            <button type="button" id="button_1" th:each="top:${top}"><b>[[${top.name}]]</b></button>
         </div>
     </div>
 </div>
 
 <div class="container">
     <h2>List of Orders</h2>
-        <button class="col col-lg-3" id="adm_div_3"><h1>$ [[${total}]]</h1></button>
+    <button class="col col-lg-3" id="adm_div_3"><h1>$ [[${total}]]</h1></button>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -33,7 +31,7 @@
         </thead>
         <tbody>
         <tr th:each="order : ${orders}">
-            <td>[[${order.pizza.dough.size}]]</td>
+            <td>[[${order.pizza.dough.size}]][[${order.pizza.name}]]</td>
             <td>[[${order.pizza.dough.crust}]]</td>
             <td>[[${order.pizza.dough.bake}]]</td>
             <td>[[${order.pizza.dough.seasoning}]]</td>
